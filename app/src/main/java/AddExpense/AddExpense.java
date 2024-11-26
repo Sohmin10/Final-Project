@@ -35,10 +35,9 @@ public class AddExpense extends AppCompatActivity {
 
 
 
-        // Set up Add Expense functionality
+
         setupAddExpense();
 
-        // Set up DatePicker
         setupDatePicker();
     }
 
