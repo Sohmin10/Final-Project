@@ -4,17 +4,18 @@ import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.DatePicker;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.finalprojectg3.R;
 import com.example.finalprojectg3.databinding.ActivityAddExpenseBinding;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 
@@ -33,22 +34,36 @@ public class AddExpense extends AppCompatActivity {
         binding = ActivityAddExpenseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setupSpinner(); // Initialize the spinner with data
+        setupAddExpense(); // Handle add expense functionality
+        setupDatePicker(); // Handle date selection
+    }
 
+    private void setupSpinner() {
+        // Populate the spinner with categories from resources
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.expense_categories, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spCategory.setAdapter(adapter);
 
-
-        setupAddExpense();
-
-        setupDatePicker();
+        // Populate payment method spinner
+        ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(
+                this, R.array.payment_methods, android.R.layout.simple_spinner_item);
+        paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spPaymentMethod.setAdapter(paymentAdapter);
     }
 
     private void setupAddExpense() {
-        // Handle Add Expense button click
         binding.btnAddExpense.setOnClickListener(v -> {
             String amount = binding.etAmount.getText().toString();
-            String category = binding.spCategory.getSelectedItem().toString();
+            String category = binding.spCategory.getSelectedItem() != null
+                    ? binding.spCategory.getSelectedItem().toString()
+                    : "Uncategorized"; // Default value
             String date = binding.etDate.getText().toString();
             String notes = binding.etNotes.getText().toString();
-            String paymentMethod = binding.spPaymentMethod.getSelectedItem().toString();
+            String paymentMethod = binding.spPaymentMethod.getSelectedItem() != null
+                    ? binding.spPaymentMethod.getSelectedItem().toString()
+                    : "Cash"; // Default value
 
             // Input validation
             if (TextUtils.isEmpty(amount)) {
@@ -61,7 +76,12 @@ public class AddExpense extends AppCompatActivity {
                 return;
             }
 
-            // Save expense into SharedPreferences
+            if (TextUtils.isEmpty(category) || category.equals("Uncategorized")) {
+                showToast("Please select a valid category!");
+                return;
+            }
+
+            // Save expense to SharedPreferences
             saveExpense(amount, category, date, notes, paymentMethod);
         });
     }
@@ -76,13 +96,10 @@ public class AddExpense extends AppCompatActivity {
 
             // Create DatePickerDialog
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddExpense.this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    // Set selected date to EditText in "dd/MM/yyyy" format
-                    String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                    binding.etDate.setText(selectedDate);
-                }
+                    AddExpense.this, (view, year1, monthOfYear, dayOfMonth) -> {
+                // Set selected date to EditText in "dd/MM/yyyy" format
+                String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1;
+                binding.etDate.setText(selectedDate);
             }, year, month, day);
 
             // Show DatePickerDialog
@@ -91,26 +108,43 @@ public class AddExpense extends AppCompatActivity {
     }
 
     private void saveExpense(String amount, String category, String date, String notes, String paymentMethod) {
-        // Use SharedPreferences to save the expense data
         SharedPreferences sharedPreferences = getSharedPreferences("ExpensePrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        // For simplicity, we'll save a single expense with a unique key
-        String key = "expense_" + System.currentTimeMillis(); // Use current timestamp as a unique key
-        editor.putString(key + "_amount", amount);
-        editor.putString(key + "_category", category);
-        editor.putString(key + "_date", date);
-        editor.putString(key + "_notes", notes);
-        editor.putString(key + "_paymentMethod", paymentMethod);
+        // Try to load the existing list of expenses, or create a new one if not found
+        JSONArray expenseArray;
+        try {
+            String expensesData = sharedPreferences.getString("expenses_list", "[]");
+            expenseArray = new JSONArray(expensesData);
+        } catch (JSONException e) {
+            expenseArray = new JSONArray();
+        }
 
-        // Apply changes to SharedPreferences
-        editor.apply();
+        // Create a new expense object and add it to the list
+        JSONObject expenseObj = new JSONObject();
+        try {
+            expenseObj.put("amount", amount);
+            expenseObj.put("category", category);
+            expenseObj.put("date", date);
+            expenseObj.put("notes", notes);
+            expenseObj.put("paymentMethod", paymentMethod);
 
-        // Show the saved expense in a Toast
-        String expenseDetails = String.format("Expense Added:\nAmount: %s\nCategory: %s\nDate: %s\nNotes: %s\nPayment Method: %s",
-                amount, category, date, notes, paymentMethod);
-        showToast(expenseDetails);
+            // Add the new expense to the existing array
+            expenseArray.put(expenseObj);
+
+            // Save the updated list to SharedPreferences
+            editor.putString("expenses_list", expenseArray.toString());
+            editor.apply();
+
+            // Show confirmation
+            String expenseDetails = String.format("Expense Added:\nAmount: %s\nCategory: %s\nDate: %s\nNotes: %s\nPayment Method: %s",
+                    amount, category, date, notes, paymentMethod);
+            showToast(expenseDetails);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
+
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

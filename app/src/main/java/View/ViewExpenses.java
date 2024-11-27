@@ -1,9 +1,9 @@
 package View;
 
-
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -63,10 +63,21 @@ public class ViewExpenses extends AppCompatActivity {
                 ));
             }
 
+            // Check if the list is empty
+            if (expenses.isEmpty()) {
+                binding.tvNoExpenses.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "No expenses to display", Toast.LENGTH_SHORT).show();
+            } else {
+                binding.tvNoExpenses.setVisibility(View.GONE);
+            }
+
+            // Submit list to the adapter
             adapter.submitList(expenses);
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(this, "Error loading expenses", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

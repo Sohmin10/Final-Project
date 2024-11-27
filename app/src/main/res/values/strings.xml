@@ -1,15 +1,17 @@
 <resources>
-    <string name="app_name">FinalProjectG3</string>
-    <string-array name="categories">
+    <string name="app_name">Final Project</string>
+    <string-array name="expense_categories">
         <item>Food</item>
         <item>Transport</item>
-        <item>Shopping</item>
-        <item>Others</item>
+        <item>Entertainment</item>
+        <item>Utilities</item>
+        <item>Miscellaneous</item>
     </string-array>
+
     <string-array name="payment_methods">
         <item>Cash</item>
         <item>Credit Card</item>
         <item>Debit Card</item>
-        <item>Online</item>
+        <item>Bank Transfer</item>
     </string-array>
 </resources>
