@@ -1,5 +1,4 @@
 package reminder;
-
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -8,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -82,7 +82,7 @@ public class SetReminder extends AppCompatActivity {
             }
 
             // Trigger notification on selected date and time
-            showNotification(date, time);
+            scheduleReminderNotification(date, time);
         });
     }
 
@@ -103,7 +103,40 @@ public class SetReminder extends AppCompatActivity {
         }
     }
 
-    private void showNotification(String date, String time) {
+    private void scheduleReminderNotification(String date, String time) {
+        // Parse selected date and time into a calendar object
+        String[] dateParts = date.split("/");
+        String[] timeParts = time.split(":");
+
+        int day = Integer.parseInt(dateParts[0]);
+        int month = Integer.parseInt(dateParts[1]) - 1; // Months are 0-indexed
+        int year = Integer.parseInt(dateParts[2]);
+
+        int hour = Integer.parseInt(timeParts[0]);
+        int minute = Integer.parseInt(timeParts[1]);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day, hour, minute, 0);
+
+        long reminderTimeMillis = calendar.getTimeInMillis();
+
+        // Set a delay before showing the notification if the time is in the future
+        long currentTimeMillis = System.currentTimeMillis();
+        long delayMillis = reminderTimeMillis - currentTimeMillis;
+
+        if (delayMillis > 0) {
+            // Schedule notification with delay
+            new Handler().postDelayed(() -> showReminderNotification(date, time), delayMillis);
+        } else {
+            // Show notification immediately if the time has passed
+            showReminderNotification(date, time);
+        }
+
+        // Toast to show reminder has been set
+        Toast.makeText(this, "Reminder set for: " + date + " " + time, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showReminderNotification(String date, String time) {
         // Create notification content
         String message = "Reminder for transaction of '$" + expense.getAmount() + "'\nNotes: " + expense.getNotes();
 
@@ -114,14 +147,10 @@ public class SetReminder extends AppCompatActivity {
                 .setPriority(Notification.PRIORITY_DEFAULT)
                 .build();
 
-
-        // Show notification immediately
+        // Show notification
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
             notificationManager.notify(0, notification);  // 0 is the notification ID
         }
-
-        // Toast to show reminder has been set
-        Toast.makeText(this, "Reminder set for: " + date + " " + time, Toast.LENGTH_SHORT).show();
     }
 }
