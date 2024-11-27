@@ -2,26 +2,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnAddExpense"
+    <TextView
+        android:id="@+id/tvExpenseDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Expense" />
+        android:text="Expense Details"
+        android:textSize="18sp"/>
 
-    <Button
-        android:id="@+id/btnViewExpenses"
+    <EditText
+        android:id="@+id/etDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="View Expenses" />
+        android:hint="Select Date"/>
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Time"/>
 
     <Button
         android:id="@+id/btnAddReminder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Add Reminder" />
+        android:text="Add Reminder"/>
 </LinearLayout>

@@ -1,15 +1,13 @@
 package mainScreen;
 
 import AddExpense.AddExpense;
+import View.ViewExpenses;
+import select.SelectTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.finalprojectg3.databinding.ActivityMainBinding;
-
-import View.ViewExpenses;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         binding.btnViewExpenses.setOnClickListener(v -> {
             // Navigate to ViewExpenses activity
             Intent intent = new Intent(MainActivity.this, ViewExpenses.class);
+            startActivity(intent);
+        });
+
+        binding.btnAddReminder.setOnClickListener(v -> {
+            // Navigate to SelectTransaction activity
+            Intent intent = new Intent(MainActivity.this, SelectTransaction.class);
             startActivity(intent);
         });
     }

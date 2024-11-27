@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProjectG3">
         <activity
+            android:name="reminder.SetReminder"
+            android:exported="false" />
+        <activity
+            android:name="select.SelectTransaction"
+            android:exported="false" />
+        <activity
             android:name="View.ViewExpenses"
             android:exported="false" />
         <activity

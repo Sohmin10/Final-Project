@@ -1,8 +1,8 @@
 package model;
 
+import java.io.Serializable;
 
-
-public class Expense {
+public class Expense implements Serializable {  // Implement Serializable
     private final String amount;
     private final String category;
     private final String date;
@@ -17,10 +17,23 @@ public class Expense {
         this.paymentMethod = paymentMethod;
     }
 
-    public String getAmount() { return amount; }
-    public String getCategory() { return category; }
-    public String getDate() { return date; }
-    public String getNotes() { return notes; }
-    public String getPaymentMethod() { return paymentMethod; }
-}
+    public String getAmount() {
+        return amount;
+    }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+}
