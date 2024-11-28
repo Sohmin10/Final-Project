@@ -1,20 +1,23 @@
 package reminder;
 import android.app.DatePickerDialog;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.TimePickerDialog;
-import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import com.example.finalprojectg3.R;
+//import com.example.finalprojectg3.Manifest;
+import android.Manifest;
+
 import com.example.finalprojectg3.databinding.ActivitySetReminderBinding;
 
 import java.util.Calendar;
@@ -83,7 +86,20 @@ public class SetReminder extends AppCompatActivity {
 
             // Trigger notification on selected date and time
             scheduleReminderNotification(date, time);
+
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Notification permission granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void createNotificationChannel() {
@@ -91,7 +107,7 @@ public class SetReminder extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Expense Reminder Channel";
             String description = "Channel for expense reminders";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
 
@@ -137,20 +153,23 @@ public class SetReminder extends AppCompatActivity {
     }
 
     private void showReminderNotification(String date, String time) {
-        // Create notification content
-        String message = "Reminder for transaction of '$" + expense.getAmount() + "'\nNotes: " + expense.getNotes();
-
-        Notification notification = new Notification.Builder(this, CHANNEL_ID)
-                .setContentTitle("Expense Reminder")
-                .setContentText(message)
-                .setSmallIcon(android.R.drawable.ic_dialog_info) // Use default system icon
-                .setPriority(Notification.PRIORITY_DEFAULT)
-                .build();
-
-        // Show notification
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        if (notificationManager != null) {
-            notificationManager.notify(0, notification);  // 0 is the notification ID
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // API level 33 or higher
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+                return;
+            }
         }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(android.R.drawable.ic_dialog_info) // Use default system icon
+                .setContentTitle("Expense Reminder")
+                .setContentText("Reminder for transaction of $" + expense.getAmount() + "\nNotes: " + expense.getNotes())
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(1, builder.build());
+
+        Toast.makeText(this, "Reminder notification sent", Toast.LENGTH_SHORT).show();
     }
+
 }
