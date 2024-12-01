@@ -1,5 +1,6 @@
 package View;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.ExpenseAdapter;
+import editExpense.UpdateExpenseActivity;
 import model.Expense;
+import select.SelectTransaction;
 
 public class ViewExpenses extends AppCompatActivity {
 
@@ -38,6 +41,22 @@ public class ViewExpenses extends AppCompatActivity {
 
         // Set up adapter
         adapter = new ExpenseAdapter();
+        adapter.setOnItemClickListener(new ExpenseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Expense expense, int position) {
+                Intent intent = new Intent(ViewExpenses.this, SelectTransaction.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onEditClick(Expense expense, int position) {
+                // Open UpdateExpenseActivity for editing
+                Intent intent = new Intent(ViewExpenses.this, UpdateExpenseActivity.class);
+                intent.putExtra("expense", expense); // Pass selected expense
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
+        });
         binding.rvExpenses.setAdapter(adapter);
 
         // Load expenses from SharedPreferences
@@ -80,4 +99,10 @@ public class ViewExpenses extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload expenses when the activity is resumed
+        loadExpenses();
+    }
 }

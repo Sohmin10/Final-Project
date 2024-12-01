@@ -1,4 +1,5 @@
 package select;
+import editExpense.UpdateExpenseActivity;
 import reminder.SetReminder;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,11 +40,27 @@ public class SelectTransaction extends AppCompatActivity {
         binding.recyclerView.setAdapter(adapter);
 
         // Set item click listener for the adapter
-        adapter.setOnItemClickListener(expense -> {
-            // Handle the click event here
-            Intent intent = new Intent(SelectTransaction.this, SetReminder.class);
-            intent.putExtra("expense", expense); // Pass the selected expense to the next activity
-            startActivity(intent);
+        adapter.setOnItemClickListener(new ExpenseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Expense expense, int position) {
+                // Handle regular item click
+                Intent intent = new Intent(SelectTransaction.this, SetReminder.class);
+                intent.putExtra("expense", expense);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onEditClick(Expense expense, int position) {
+                // Handle edit button click
+                if (position != -1) { // Make sure the position is valid
+                    Intent intent = new Intent(SelectTransaction.this, UpdateExpenseActivity.class);
+                    intent.putExtra("expense", expense); // Pass the selected expense
+                    intent.putExtra("position", position); // Pass the valid position
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(SelectTransaction.this, "Invalid position", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         // Load the expenses from SharedPreferences

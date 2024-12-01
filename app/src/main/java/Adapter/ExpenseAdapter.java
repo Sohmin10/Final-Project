@@ -1,19 +1,22 @@
 package Adapter;
 
-//testing pull request - added by soham
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.finalprojectg3.databinding.ItemExpenseBinding;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import model.Expense;
 
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseViewHolder> {
 
-    private static final List<Expense> expenses = new ArrayList<>();
-    private static OnItemClickListener onItemClickListener;  // Declare the listener as an instance variable
+    private final List<Expense> expenses = new ArrayList<>();
+    private OnItemClickListener onItemClickListener;  // Declare the listener as an instance variable
 
     @NonNull
     @Override
@@ -24,7 +27,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
 
     @Override
     public void onBindViewHolder(@NonNull ExpenseViewHolder holder, int position) {
-        holder.bind(expenses.get(position));
+        holder.bind(expenses.get(position), position); // Pass position
     }
 
     @Override
@@ -41,37 +44,43 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
 
     // Method to set the onItemClickListener
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.onItemClickListener = listener;
+        onItemClickListener = listener;
     }
 
     // Interface to define the click listener
     public interface OnItemClickListener {
-        void onItemClick(Expense expense);  // Method for handling item click
+        void onItemClick(Expense expense, int position); // For the item itself
+        void onEditClick(Expense expense, int position); // For the edit button
     }
 
     // ViewHolder class to bind the expense data
-    static class ExpenseViewHolder extends RecyclerView.ViewHolder {
+    class ExpenseViewHolder extends RecyclerView.ViewHolder {
         private final ItemExpenseBinding binding;
 
         public ExpenseViewHolder(@NonNull ItemExpenseBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 
-            // Set up the click listener in the ViewHolder
+            // Set up click listener for the "Edit" button
+            binding.btnEditExpense.setOnClickListener(v -> {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onEditClick(expenses.get(getAdapterPosition()), getAdapterPosition());
+                }
+            });
+
+            // Set up click listener for the whole item
             binding.getRoot().setOnClickListener(v -> {
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(expenses.get(getAdapterPosition()));
+                    onItemClickListener.onItemClick(expenses.get(getAdapterPosition()), getAdapterPosition());
                 }
             });
         }
 
-        // Bind the expense data to the ViewHolder
-        public void bind(Expense expense) {
+        public void bind(Expense expense, int position) {
             binding.tvAmount.setText("Amount: " + expense.getAmount());
             binding.tvCategory.setText("Category: " + expense.getCategory());
             binding.tvDate.setText("Date: " + expense.getDate());
             binding.tvNotes.setText("Notes: " + expense.getNotes());
             binding.tvPaymentMethod.setText("Payment Method: " + expense.getPaymentMethod());
         }
-    }
-}
+    }}

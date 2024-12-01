@@ -42,7 +42,8 @@ public class SetReminder extends AppCompatActivity {
         createNotificationChannel();
 
         // Retrieve selected expense from intent
-        expense = (Expense) getIntent().getSerializableExtra("expense");
+//        expense = (Expense) getIntent().getSerializableExtra("expense");
+        Expense expense = (Expense) getIntent().getSerializableExtra("expense");
 
         binding.tvExpenseDetails.setText("Amount: " + expense.getAmount() + "\nNotes: " + expense.getNotes());
 

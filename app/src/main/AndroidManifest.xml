@@ -12,29 +12,37 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProjectG3">
+
         <activity
             android:name="reminder.SetReminder"
             android:exported="false" />
+
         <activity
             android:name="select.SelectTransaction"
             android:exported="false" />
+
         <activity
             android:name="View.ViewExpenses"
             android:exported="false" />
+
         <activity
             android:name="mainScreen.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="AddExpense.AddExpense"
             android:exported="true"
-            android:theme="@style/Theme.FinalProjectG3">
-        </activity>
+            android:theme="@style/Theme.FinalProjectG3" />
+
+        <!-- Added UpdateExpenseActivity declaration -->
+        <activity
+            android:name="editExpense.UpdateExpenseActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
