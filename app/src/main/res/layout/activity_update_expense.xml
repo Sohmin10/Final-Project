@@ -21,58 +21,69 @@
                 android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Amount"
-                android:inputType="numberDecimal" />
+                android:hint="@string/amount_hint"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:padding="12dp" />
 
-            <!-- Category EditText -->
-            <EditText
-                android:id="@+id/etCategory"
+            <!-- Category Spinner -->
+            <Spinner
+                android:id="@+id/spinnerCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category" />
+                android:minHeight="48dp"
+                android:padding="12dp" />
 
             <!-- Date EditText -->
             <EditText
                 android:id="@+id/etDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date" />
+                android:hint="@string/date_hint"
+                android:minHeight="48dp"
+                android:padding="12dp" />
 
             <!-- Notes EditText -->
             <EditText
                 android:id="@+id/etNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Notes" />
+                android:hint="@string/notes_hint"
+                android:minHeight="48dp"
+                android:padding="12dp" />
 
-            <!-- Payment Method EditText -->
-            <EditText
-                android:id="@+id/etPaymentMethod"
+            <!-- Payment Method Spinner -->
+            <Spinner
+                android:id="@+id/spinnerPaymentMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Payment Method" />
+                android:minHeight="48dp"
+                android:padding="12dp" />
 
             <!-- Save Button -->
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save" />
+                android:text="@string/save"
+                android:minHeight="48dp" />
 
             <!-- Cancel Button -->
             <Button
                 android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cancel"/>
+                android:text="@string/cancel"
+                android:minHeight="48dp" />
 
             <!-- Delete Button -->
             <Button
                 android:id="@+id/btnDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Delete"
-                android:backgroundTint="#E23131"/>
+                android:text="@string/delete"
+                android:backgroundTint="#E23131"
+                android:minHeight="48dp" />
 
         </LinearLayout>
     </ScrollView>
