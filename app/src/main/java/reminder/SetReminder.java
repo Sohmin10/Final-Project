@@ -1,4 +1,5 @@
 package reminder;
+
 import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,7 +16,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-//import com.example.finalprojectg3.Manifest;
 import android.Manifest;
 
 import com.example.finalprojectg3.databinding.ActivitySetReminderBinding;
@@ -42,9 +42,16 @@ public class SetReminder extends AppCompatActivity {
         createNotificationChannel();
 
         // Retrieve selected expense from intent
-//        expense = (Expense) getIntent().getSerializableExtra("expense");
-        Expense expense = (Expense) getIntent().getSerializableExtra("expense");
+        expense = (Expense) getIntent().getSerializableExtra("expense");
 
+        // Check if expense is null and handle it
+        if (expense == null) {
+            Toast.makeText(this, "No expense data passed", Toast.LENGTH_SHORT).show();
+            finish();  // Optionally finish activity if expense is null
+            return;
+        }
+
+        // Set the expense details to display on screen
         binding.tvExpenseDetails.setText("Amount: " + expense.getAmount() + "\nNotes: " + expense.getNotes());
 
         // Set up date picker
@@ -87,7 +94,6 @@ public class SetReminder extends AppCompatActivity {
 
             // Trigger notification on selected date and time
             scheduleReminderNotification(date, time);
-
         });
     }
 
