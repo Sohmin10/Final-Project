@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvGroupName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Group Name"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:padding="8dp" />
+
+            <EditText
+                android:id="@+id/etNewMemberName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter New Member Name"
+                android:inputType="text"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btnAddMember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Member"
+                android:layout_marginTop="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGroupMembers"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp" />
+
+            <Button
+                android:id="@+id/btnDeleteGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete Group"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.wear.widget.BoxInsetLayout>

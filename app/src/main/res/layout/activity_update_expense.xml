@@ -24,16 +24,17 @@
                 android:hint="@string/amount_hint"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
-                android:padding="12dp" />
+                android:padding="12dp"/>
 
+            <!-- Category EditText -->
             <!-- Category Spinner -->
             <Spinner
                 android:id="@+id/spinnerCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Category"
                 android:minHeight="48dp"
                 android:padding="12dp" />
-
             <!-- Date EditText -->
             <EditText
                 android:id="@+id/etDate"
@@ -50,8 +51,9 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/notes_hint"
                 android:minHeight="48dp"
-                android:padding="12dp" />
+                android:padding="12dp"/>
 
+            <!-- Payment Method EditText -->
             <!-- Payment Method Spinner -->
             <Spinner
                 android:id="@+id/spinnerPaymentMethod"

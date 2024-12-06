@@ -3,6 +3,8 @@ package mainScreen;
 import AddExpense.AddExpense;
 import View.ViewExpenses;
 import select.SelectTransaction;
+import Group.CreateGroupActivity;
+import Group.ViewGroupsActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,21 +24,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Set up button listeners
+
+        // Add Expense
         binding.btnAddExpense.setOnClickListener(v -> {
-            // Navigate to AddExpense activity
             Intent intent = new Intent(MainActivity.this, AddExpense.class);
             startActivity(intent);
         });
 
+        // View Expenses
         binding.btnViewExpenses.setOnClickListener(v -> {
-            // Navigate to ViewExpenses activity
             Intent intent = new Intent(MainActivity.this, ViewExpenses.class);
             startActivity(intent);
         });
 
+        // Set Reminder
         binding.btnAddReminder.setOnClickListener(v -> {
-            // Navigate to SelectTransaction activity
             Intent intent = new Intent(MainActivity.this, SelectTransaction.class);
+            startActivity(intent);
+        });
+
+        // Create Group
+        binding.btnCreateGroup.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CreateGroupActivity.class);
+            startActivity(intent);
+        });
+
+        // View Groups
+        binding.btnViewGroups.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ViewGroupsActivity.class);
             startActivity(intent);
         });
     }

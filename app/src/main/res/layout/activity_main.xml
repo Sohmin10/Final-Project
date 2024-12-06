@@ -4,47 +4,80 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="8dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <!-- Add Expense Button -->
-        <Button
-            android:id="@+id/btnAddExpense"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Expense"
-            android:layout_marginBottom="12dp"
-            android:padding="10dp"
-            android:minWidth="100dp"
-            android:layout_gravity="center"
-            android:textSize="14sp"/>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp"
+            android:spacing="16dp"> <!-- Added spacing for buttons -->
 
-        <!-- View Expenses Button -->
-        <Button
-            android:id="@+id/btnViewExpenses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Expenses"
-            android:layout_marginBottom="12dp"
-            android:padding="10dp"
-            android:minWidth="100dp"
-            android:layout_gravity="center"
-            android:textSize="14sp"/>
+            <!-- Add Expense Button -->
+            <Button
+                android:id="@+id/btnAddExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Expense"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
 
-        <!-- Add Reminder Button -->
-        <Button
-            android:id="@+id/btnAddReminder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Reminder"
-            android:padding="10dp"
-            android:minWidth="100dp"
-            android:layout_gravity="center"
-            android:textSize="14sp"/>
+            <!-- View Expenses Button -->
+            <Button
+                android:id="@+id/btnViewExpenses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Expenses"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
 
-    </LinearLayout>
+            <!-- Add Reminder Button -->
+            <Button
+                android:id="@+id/btnAddReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Reminder"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
+            <!-- Create Group Button -->
+            <Button
+                android:id="@+id/btnCreateGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Group"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
+            <!-- View Groups Button -->
+            <Button
+                android:id="@+id/btnViewGroups"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Groups"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.wear.widget.BoxInsetLayout>
