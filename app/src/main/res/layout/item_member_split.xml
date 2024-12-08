@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="@dimen/activity_padding">
 
     <!-- Member Name -->
     <TextView
@@ -11,16 +12,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Member Name"
-        android:textSize="16sp"
+        android:text="@string/member_name"
+        android:textSize="@dimen/text_size_member_name"
         android:textStyle="bold"
-        android:paddingEnd="8dp" />
+        android:paddingEnd="@dimen/padding_end" />
 
     <!-- Split Amount -->
     <TextView
         android:id="@+id/splitAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$0.00"
-        android:textSize="16sp" />
+        android:text="@string/split_amount"
+        android:textSize="@dimen/text_size_split_amount" />
 </LinearLayout>
