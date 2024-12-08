@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="min_touch_target">48dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="margin_top_small">16dp</dimen>
+
+    <dimen name="box_inset_padding">16dp</dimen>
+    <dimen name="linear_layout_padding">8dp</dimen>
+    <dimen name="linear_layout_spacing">16dp</dimen>
+    <dimen name="element_spacing">16dp</dimen>
+    <dimen name="edit_text_padding">10dp</dimen>
+    <dimen name="button_padding">10dp</dimen>
+    <dimen name="button_min_width">120dp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+
+
+
+    <dimen name="scroll_view_padding">16dp</dimen>
+
+
+    <dimen name="margin_top_medium">16dp</dimen>
+
+
+
+    <dimen name="activity_padding">16dp</dimen>
+
+    <dimen name="button_margin_bottom">12dp</dimen>
+
+
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="button_spacing">16dp</dimen>
+
+
+
+    <dimen name="spacing_small">16dp</dimen>
+    <dimen name="spacing_medium">24dp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+
+
+
+    <dimen name="text_size_medium">16sp</dimen>
+
+
+
+    <dimen name="edit_text_min_height">48dp</dimen>
+
+    <dimen name="button_min_height">48dp</dimen>
+
+
+    <dimen name="text_size">18sp</dimen>
+    <dimen name="recycler_view_margin_top">16dp</dimen>
+
+
+    <dimen name="text_padding">8dp</dimen>
+    <dimen name="edit_text_margin_top">8dp</dimen>
+    <dimen name="button_margin_top">8dp</dimen>
+
+
+    <dimen name="margin_bottom">16dp</dimen>
+    <dimen name="layout_margin_bottom">8dp</dimen>
+    <dimen name="layout_margin_top">4dp</dimen>
+    <dimen name="layout_margin_top_split">2dp</dimen>
+    <dimen name="text_size_expense_name">16sp</dimen>
+    <dimen name="text_size_amount">14sp</dimen>
+
+    <dimen name="text_size_member_name">16sp</dimen>
+
+    <dimen name="text_size_split_amount">16sp</dimen>
+    <dimen name="padding_end">8dp</dimen>
+
+    <dimen name="spinner_min_height">68dp</dimen>
+
+
+
+</resources>
