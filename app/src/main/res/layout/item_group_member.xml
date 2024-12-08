@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="@dimen/activity_padding"
     android:background="?attr/selectableItemBackground">
 
     <TextView
@@ -12,15 +12,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Member Name"
-        android:textSize="16sp"
+        android:text="@string/member_name"
+        android:textSize="@dimen/text_size_member_name"
         android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/btnDeleteMember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete"
+        android:text="@string/delete"
         android:background="@android:color/holo_red_light"
         android:textColor="@android:color/white" />
 </LinearLayout>
