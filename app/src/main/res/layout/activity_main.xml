@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/activity_padding">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,19 +14,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="8dp"
-            android:spacing="16dp"> <!-- Added spacing for buttons -->
+            android:padding="@dimen/linear_layout_padding"
+            android:spacing="@dimen/button_spacing">
 
             <!-- Add Expense Button -->
             <Button
                 android:id="@+id/btnAddExpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Expense"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/add_expense"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
 
             <!-- View Expenses Button -->
@@ -34,11 +34,11 @@
                 android:id="@+id/btnViewExpenses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Expenses"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/view_expenses"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
 
             <!-- Add Reminder Button -->
@@ -46,35 +46,35 @@
                 android:id="@+id/btnAddReminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Reminder"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/add_reminder"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
 
             <!-- Create Group Button -->
             <Button
                 android:id="@+id/btnCreateGroup"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create Group"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/create_group"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
 
             <!-- View Groups Button -->
             <Button
                 android:id="@+id/btnViewGroups"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Groups"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/view_groups"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
 
             <!-- Add Group Expense Button -->
@@ -82,24 +82,27 @@
                 android:id="@+id/btnAddGroupExpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Group Expense"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/add_group_expense"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
+
 
             <!-- View Group Expenses Button -->
             <Button
                 android:id="@+id/btnViewGroupExpenses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Group Expenses"
-                android:layout_marginBottom="12dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/view_group_expenses"
+                android:layout_marginBottom="@dimen/button_margin_bottom"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/button_text_size"
                 android:layout_gravity="center"/>
+
+
 
         </LinearLayout>
     </ScrollView>
