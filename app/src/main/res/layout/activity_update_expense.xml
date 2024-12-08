@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/activity_padding">
 
             <!-- Amount EditText -->
             <EditText
@@ -23,26 +23,26 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/amount_hint"
                 android:inputType="numberDecimal"
-                android:minHeight="48dp"
-                android:padding="12dp"/>
+                android:minHeight="@dimen/edit_text_min_height"
+                android:padding="@dimen/edit_text_padding"/>
 
-            <!-- Category EditText -->
             <!-- Category Spinner -->
             <Spinner
                 android:id="@+id/spinnerCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category"
-                android:minHeight="48dp"
-                android:padding="12dp" />
+                android:hint="@string/category_hint"
+                android:minHeight="@dimen/edit_text_min_height"
+                android:padding="@dimen/edit_text_padding" />
+
             <!-- Date EditText -->
             <EditText
                 android:id="@+id/etDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/date_hint"
-                android:minHeight="48dp"
-                android:padding="12dp" />
+                android:minHeight="@dimen/edit_text_min_height"
+                android:padding="@dimen/edit_text_padding" />
 
             <!-- Notes EditText -->
             <EditText
@@ -50,17 +50,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/notes_hint"
-                android:minHeight="48dp"
-                android:padding="12dp"/>
+                android:minHeight="@dimen/edit_text_min_height"
+                android:padding="@dimen/edit_text_padding"/>
 
-            <!-- Payment Method EditText -->
             <!-- Payment Method Spinner -->
             <Spinner
                 android:id="@+id/spinnerPaymentMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp" />
+                android:minHeight="@dimen/edit_text_min_height"
+                android:padding="@dimen/edit_text_padding" />
 
             <!-- Save Button -->
             <Button
@@ -68,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/save"
-                android:minHeight="48dp" />
+                android:minHeight="@dimen/button_min_height" />
 
             <!-- Cancel Button -->
             <Button
@@ -76,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"
-                android:minHeight="48dp" />
+                android:minHeight="@dimen/button_min_height" />
 
             <!-- Delete Button -->
             <Button
@@ -84,8 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/delete"
-                android:backgroundTint="#E23131"
-                android:minHeight="48dp" />
+                android:backgroundTint="@color/delete_button_color"
+                android:minHeight="@dimen/button_min_height" />
 
         </LinearLayout>
     </ScrollView>
