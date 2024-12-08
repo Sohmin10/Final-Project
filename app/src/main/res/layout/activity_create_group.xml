@@ -3,51 +3,56 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/box_inset_padding">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="@dimen/scroll_view_padding">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/linear_layout_padding">
 
+            <!-- Group Name -->
             <EditText
                 android:id="@+id/etGroupName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Group Name"
+                android:hint="@string/hint_group_name"
                 android:inputType="text"
-                android:padding="8dp" />
+                android:padding="@dimen/edit_text_padding"
+                android:minHeight="@dimen/min_touch_target" />
 
+            <!-- Member Name -->
             <EditText
                 android:id="@+id/etMemberName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Member Name"
+                android:minHeight="@dimen/min_touch_target"
+                android:hint="@string/hint_member_name"
                 android:inputType="text"
-                android:padding="8dp"
-                android:layout_marginTop="16dp" />
+                android:padding="@dimen/edit_text_padding"
+                android:layout_marginTop="@dimen/margin_top_medium" />
 
+            <!-- Add Member Button -->
             <Button
                 android:id="@+id/btnAddMember"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Member"
-                android:layout_marginTop="8dp" />
+                android:text="@string/btn_add_member"
+                android:layout_marginTop="@dimen/margin_top_small" />
 
+            <!-- Save Group Button -->
             <Button
                 android:id="@+id/btnSaveGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Group"
-                android:layout_marginTop="16dp" />
+                android:text="@string/btn_save_group"
+                android:layout_marginTop="@dimen/margin_top_medium" />
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.wear.widget.BoxInsetLayout>
