@@ -9,36 +9,36 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="@dimen/activity_padding">
 
         <TextView
             android:id="@+id/tvExpenseDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expense Details"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp"
+            android:text="@string/expense_details"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_marginBottom="@dimen/spacing_small"
             android:gravity="center" />
 
         <EditText
             android:id="@+id/etDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Select Date" />
+            android:hint="@string/hint_select_date" />
 
         <EditText
             android:id="@+id/etTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Select Time" />
+            android:hint="@string/hint_select_time" />
 
         <Button
             android:id="@+id/btnAddReminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Reminder"
-            android:layout_marginTop="8dp"
-            android:padding="12dp"
+            android:text="@string/add_reminder"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:padding="@dimen/button_padding"
             android:layout_gravity="center" />
 
     </LinearLayout>
