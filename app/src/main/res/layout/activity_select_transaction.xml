@@ -4,23 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="@dimen/activity_padding">
 
     <TextView
         android:id="@+id/tvSelectTransaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Transaction"
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp"
+        android:text="@string/select_transaction"
+        android:textSize="@dimen/text_size_small"
+        android:layout_marginBottom="@dimen/spacing_small"
         android:gravity="center"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="@dimen/spacing_medium"/>
 
     <TextView
         android:id="@+id/tvNoExpenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No expenses available"
+        android:text="@string/no_expenses"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
