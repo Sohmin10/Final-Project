@@ -3,22 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/activity_padding">
 
     <TextView
         android:id="@+id/tvNoExpenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No expenses to display"
+        android:text="@string/no_expenses_message"
         android:layout_gravity="center_horizontal"
         android:visibility="gone"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size"
         android:textColor="@android:color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExpenses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/recycler_view_margin_top" />
 
 </LinearLayout>
