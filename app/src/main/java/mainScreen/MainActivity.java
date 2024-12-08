@@ -1,6 +1,8 @@
 package mainScreen;
 
 import AddExpense.AddExpense;
+import Group.AddGroupExpenseActivity;
+import Group.ViewGroupExpensesActivity;
 import View.ViewExpenses;
 import select.SelectTransaction;
 import Group.CreateGroupActivity;
@@ -52,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
         // View Groups
         binding.btnViewGroups.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ViewGroupsActivity.class);
+            startActivity(intent);
+        });
+
+        // Add Group Expense
+        binding.btnAddGroupExpense.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddGroupExpenseActivity.class);
+            startActivity(intent);
+        });
+
+        // View Group Expenses
+        binding.btnViewGroupExpenses.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ViewGroupExpensesActivity.class);
             startActivity(intent);
         });
     }

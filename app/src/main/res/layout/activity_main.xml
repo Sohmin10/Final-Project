@@ -77,6 +77,30 @@
                 android:textSize="16sp"
                 android:layout_gravity="center"/>
 
+            <!-- Add Group Expense Button -->
+            <Button
+                android:id="@+id/btnAddGroupExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Group Expense"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
+            <!-- View Group Expenses Button -->
+            <Button
+                android:id="@+id/btnViewGroupExpenses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Group Expenses"
+                android:layout_marginBottom="12dp"
+                android:padding="10dp"
+                android:minWidth="120dp"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
         </LinearLayout>
     </ScrollView>
 

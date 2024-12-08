@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProjectG3">
         <activity
+            android:name="Group.ViewGroupExpensesActivity"
+            android:exported="false" />
+        <activity
+            android:name="Group.AddGroupExpenseActivity"
+            android:exported="false" />
+        <activity
             android:name="Group.ViewGroupDetailsActivity"
             android:exported="false" />
         <activity
