@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="@dimen/box_inset_padding">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,47 +14,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="8dp"
-            android:spacing="16dp">
+            android:padding="@dimen/linear_layout_padding"
+            android:layout_marginBottom="@dimen/linear_layout_spacing">
 
             <!-- Select Group (Spinner) -->
             <Spinner
                 android:id="@+id/spinnerSelectGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="@dimen/element_spacing"
+                android:minHeight="@dimen/min_touch_target" />
 
             <!-- Expense Name -->
             <EditText
                 android:id="@+id/edtExpenseName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Expense Name"
-                android:layout_marginBottom="16dp"
-                android:padding="10dp"
-                android:textSize="16sp"/>
+                android:hint="@string/hint_expense_name"
+                android:layout_marginBottom="@dimen/element_spacing"
+                android:padding="@dimen/edit_text_padding"
+                android:minHeight="@dimen/min_touch_target"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_vertical" />
 
             <!-- Total Amount -->
             <EditText
                 android:id="@+id/edtTotalAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Total Amount"
+                android:hint="@string/hint_total_amount"
                 android:inputType="numberDecimal"
-                android:layout_marginBottom="16dp"
-                android:padding="10dp"
-                android:textSize="16sp"/>
+                android:layout_marginBottom="@dimen/element_spacing"
+                android:padding="@dimen/edit_text_padding"
+                android:minHeight="@dimen/min_touch_target"
+                android:textSize="@dimen/text_size_large"
+                android:gravity="center_vertical" />
 
             <!-- Add Expense Button -->
             <Button
                 android:id="@+id/btnAddExpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Expense"
-                android:layout_marginBottom="16dp"
-                android:padding="10dp"
-                android:minWidth="120dp"
-                android:textSize="16sp"
+                android:text="@string/btn_add_expense"
+                android:layout_marginBottom="@dimen/element_spacing"
+                android:padding="@dimen/button_padding"
+                android:minWidth="@dimen/button_min_width"
+                android:textSize="@dimen/text_size_large"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
