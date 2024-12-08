@@ -1,43 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="@dimen/activity_padding">
 
     <TextView
         android:id="@+id/tvAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount:" />
+        android:text="@string/amount_label" />
 
     <TextView
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category:" />
+        android:text="@string/category_label" />
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date:" />
+        android:text="@string/date_label" />
 
     <TextView
         android:id="@+id/tvNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notes:" />
+        android:text="@string/notes_label" />
 
     <TextView
         android:id="@+id/tvPaymentMethod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Payment Method:" />
+        android:text="@string/payment_method_label" />
 
     <Button
         android:id="@+id/btnEditExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Expense" />
+        android:text="@string/edit_expense" />
 </LinearLayout>
